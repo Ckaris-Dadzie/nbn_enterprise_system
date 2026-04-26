@@ -13,7 +13,6 @@ class RoleAdmin(admin.ModelAdmin):
 
 
 
-
 @admin.register(User)
 class UserAdmin(BaseUserAdmin):
     list_display   = ['email', 'full_name', 'role', 'is_active', 'created_at']
@@ -39,7 +38,6 @@ class UserAdmin(BaseUserAdmin):
             'fields':  ('email', 'username', 'full_name', 'role', 'password1', 'password2'),
         }),
     )
-
 
 
 

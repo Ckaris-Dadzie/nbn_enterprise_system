@@ -61,6 +61,7 @@ class User(AbstractBaseUser, PermissionsMixin, SoftDeleteMixin):
                       on_delete=models.SET_NULL,
                       related_name='created_users',
                   )
+    updated_at = models.DateTimeField(auto_now=True)
 
 
     objects = UserManager()
