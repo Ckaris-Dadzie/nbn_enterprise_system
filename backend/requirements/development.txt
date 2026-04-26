@@ -1,0 +1,7 @@
+# requirements/development.txt
+-r base.txt
+pytest-django==4.*
+factory-boy==3.*
+flake8==7.*
+black==24.*
+coverage==7.*

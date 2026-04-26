@@ -1,0 +1,16 @@
+django==4.2.*
+djangorestframework==3.15.*
+djoser==2.2.*
+djangorestframework-simplejwt==5.3.*
+django-environ==0.11.*
+django[argon2]
+django-cors-headers==4.*
+django-filter==23.*
+drf-spectacular==0.27.*
+django-ratelimit==4.*
+psycopg2-binary==2.9.*
+weasyprint==60.*
+openpyxl==3.1.*
+Pillow==10.*
+whitenoise==6.*
+gunicorn==21.*
