@@ -3,14 +3,18 @@ from rest_framework.permissions import BasePermission
 
 
 class RolePermission(BasePermission):
+    """Base class — override allowed_roles in each subclass."""
     allowed_roles = []
 
 
     def has_permission(self, request, view):
         if not request.user or not request.user.is_authenticated:
             return False
-        return hasattr(request.user, 'role') and \
-               request.user.role.name in self.allowed_roles
+        return (
+            hasattr(request.user, 'role') and
+            request.user.role is not None and
+            request.user.role.name in self.allowed_roles
+        )
 
 
 class IsAdminRole(RolePermission):
@@ -43,3 +47,5 @@ class IsProductManager(RolePermission):
 
 class IsProductionManager(RolePermission):
     allowed_roles = ['Admin', 'Manager', 'ProductionManager']
+
+
