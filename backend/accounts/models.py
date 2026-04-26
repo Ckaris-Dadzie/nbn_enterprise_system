@@ -4,7 +4,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from core.utils import SoftDeleteMixin
 
-
+# Role
 class Role(models.Model):
     name        = models.CharField(max_length=50, unique=True)
     description = models.TextField(blank=True, default='')
@@ -20,7 +20,7 @@ class Role(models.Model):
 
 
 
-
+# Custom User Manager
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         if not email:
@@ -39,7 +39,7 @@ class UserManager(BaseUserManager):
 
 
 
-
+# User
 class User(AbstractBaseUser, PermissionsMixin, SoftDeleteMixin):
     # UUID4 primary key — only model in the system with UUID PK
     id          = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -79,7 +79,7 @@ class User(AbstractBaseUser, PermissionsMixin, SoftDeleteMixin):
 
 
 
-
+# AuditLog
 class AuditLog(models.Model):
     user        = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     action      = models.CharField(max_length=100)
