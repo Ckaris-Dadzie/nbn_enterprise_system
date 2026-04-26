@@ -15,6 +15,7 @@ urlpatterns = [
     path('api/v1/auth/', include('djoser.urls')),
     path('api/v1/auth/', include('djoser.urls.jwt')),
     # path('api/v1/users/', include('accounts.urls')),
+    path('api/v1/roles/', include('accounts.urls_roles')),
     # path('api/v1/customers/', include('customers.urls')),
     # path('api/v1/products/', include('products.urls')),
     # path('api/v1/inventory/', include('inventory.urls')),
