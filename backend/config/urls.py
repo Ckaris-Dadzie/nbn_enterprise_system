@@ -1,15 +1,10 @@
 # config/urls.py
 from django.contrib import admin
 from django.urls import path, include
-# from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerUIView
-# from drf_spectacular.views import (
-#     SpectacularAPIView,
-#     SpectacularSwaggerView
-# )
+from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
 
     # API v1
     path('api/v1/auth/', include('djoser.urls')),
@@ -24,10 +19,14 @@ urlpatterns = [
     # path('api/v1/finance/', include('finance.urls')),
     # path('api/v1/reports/', include('reports.urls')),
 
-
-    # API Documentation
-    # path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
-    # path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+]
+# API Documentation
+urlpatterns += [
+    # YOUR PATTERNS
+    path('api/v1/schema/', SpectacularAPIView.as_view(), name='schema'),
+    # Optional UI:
+    path('api/v1/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('api/v1/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 ]
 
 
